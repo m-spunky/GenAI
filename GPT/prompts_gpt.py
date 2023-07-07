@@ -11,10 +11,9 @@ prompt = "Your Name ?"
 # "
 
 result = openai.Completion.create(engine ="text-ada-001",
-                          prompt=prompt,
-                          max_tokens=5
+                          prompt=prompt
                           )
-
+print(result)
 # model
 # ID of the model to use. You can use the List models API to see all of your available models, or see our Model overview for descriptions of them.
 

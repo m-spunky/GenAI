@@ -1,0 +1,12 @@
+# Once you reach that size, make that chunk its own piece of text and then start creating a new chunk of text with some overlap (to keep context between chunks).
+
+text = f"In Learning Transferable Visual Models From Natural Language Supervision paper, OpenAI introduces their new model which is called CLIP,for Contrastive Language-Image Pre-training.In a nutshell, this model learns the relationship between a whole sentence and the image it describes.The important thing here is that it is trained on full sentences instead of single classes like car, dog, etc.The intuition is that when trained on whole sentences, the model can learn a lot more things and finds some pattern between images and textsFor storage, we have options like :(a) ElasticSearch: It can be a very good option if we have a lot of meta-information storage and we want to run some cross-cluster search. Having said that it can cost you a lot and maintenance can cost you another expert if shipping things to production and scale.(b) FAISS: (Facebook AI Similarity Search) is a library that allows developers to quickly search for embeddings of multimedia documents that are similar to each other.It solves the limitations of traditional query search engines that are optimized for hash-based searches and provides more scalable similarity search functions.(c ) Annoy: a C++ library with Python bindings to search for points in space that are close to a given query point. It also creates large read-only file-based data structures that are mapped into memory so that many processes may share the same data" # your text
+
+from langchain.text_splitter import CharacterTextSplitter
+text_splitter = CharacterTextSplitter(
+    separator = ".",
+    chunk_size = 256,
+    chunk_overlap  = 20
+)
+docs = text_splitter.create_documents([text])
+print(docs)
